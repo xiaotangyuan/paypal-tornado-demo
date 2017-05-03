@@ -3,7 +3,7 @@
 
 <input name="cmd" type="hidden" value="_xclick">
 
-<input name="business" type="hidden" value="">
+<input name="business" type="hidden" value="{{button_info['business']}}">
 
 <input name="item_name" type="hidden" value="Test Paper 1">
 
@@ -19,7 +19,9 @@
 
 <input name="currency_code" type="hidden" value="USD">
 
-<input name="invoice" type="hidden" value="abcd">
+<input name="invoice" type="hidden" value="{{button_info['invoice']}}">
+
+<input name="notify_url" type="hidden" value="{{button_info['notify_url']}}">
 
 <input name="submit" type="image" alt="PayPal - The safer, easier way to pay online!" src=" https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0">
 
