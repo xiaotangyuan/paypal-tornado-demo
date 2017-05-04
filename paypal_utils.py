@@ -41,7 +41,7 @@ def verify_ipn_data(ipn_query_data):
     # print params
     r = requests.post(VERIFY_URL, data=params, verify=True)
     r.raise_for_status()
-    # print r.text[:100]
+    print r.text[:100]
     if r.text == 'VERIFIED':
         return True
     else:

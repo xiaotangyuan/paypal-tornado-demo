@@ -10,7 +10,7 @@ import handlers
 url_conf = [
     (r"/", handlers.MainHandler),
     (r"/paypal_ok", handlers.MainHandler),
-    (r"/ipn/?([a-z]*)/", handlers.IPNHandler),
+    (r"/ipn/?([a-z]*)", handlers.IPNHandler),
 ]
 
 application = tornado.web.Application(
