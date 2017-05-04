@@ -32,13 +32,11 @@ def get_ipn_url():
 def verify_ipn_data(ipn_query_data):
     params = 'cmd=_notify-validate&' + ipn_query_data
     VERIFY_URL = get_ipn_url()
-    params = parse_qs(urlparse(ipn_query_data).query)
-    params = dict([(key, value[0]) for key, value in params.items()])
-    params['cmd'] = '_notify-validate'
-    # print params
-    # params = {}
+    # params = parse_qs(urlparse(ipn_query_data).query)
+    # params = dict([(key, value[0]) for key, value in params.items()])
+    # params['cmd'] = '_notify-validate'
+    print params
     headers = {'content-type': 'application/x-www-form-urlencoded', 'host': 'www.paypal.com'}
-    # print params
     r = requests.post(VERIFY_URL, data=params, verify=True)
     r.raise_for_status()
     print r.text[:100]
