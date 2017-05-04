@@ -26,11 +26,15 @@ class IPNHandler(tornado.web.RequestHandler):
 
     步骤3,4需要单独的服务（进程）完成
     此handler完成步骤1,2，将 来自paypal的IPN通知数据保存已被步骤3,4 使用
+
+    防止第一步的IPN伪造通知：
+    # 生成一个密钥（需要保存） 用自定义变量形式在支付时一起提交到paypal，然后在ipn通知时 判断paypal的通知消息里含有 正确的密钥
     """
     @tornado.gen.coroutine
     def post(self, live_or_sandbox):
         print 'live_or_sandbox:', live_or_sandbox
         ipn_data = self.request.body
+        # 此处需要先检查ipn_data中是否包含正确的custom (密钥) needfix
         paypal_utils.save_ipn_data(ipn_data)
         self.finish()
         return

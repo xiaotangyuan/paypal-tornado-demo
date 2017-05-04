@@ -18,6 +18,10 @@ def get_paypal_button_info():
     button_info['invoice'] = uuid.uuid1()
     # 订单金额
     button_info['amount'] = 199.00
+    # 防止IPN伪造通知：
+    # 生成一个密钥 用自定义变量形式在支付时一起提交到paypal，然后在ipn通知时 判断paypal的通知消息里含有 正确的密钥
+    # 此处需要保存这个密钥以便PayPal通知时检查custom  needfix
+    button_info['custom'] = uuid.uuid1()
     return button_info
 
 
