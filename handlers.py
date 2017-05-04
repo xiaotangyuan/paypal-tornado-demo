@@ -28,7 +28,8 @@ class IPNHandler(tornado.web.RequestHandler):
     此handler完成步骤1,2，将 来自paypal的IPN通知数据保存已被步骤3,4 使用
     """
     @tornado.gen.coroutine
-    def post(self):
+    def post(self, live_or_sandbox):
+        print 'live_or_sandbox:', live_or_sandbox
         ipn_data = self.request.body
         paypal_utils.save_ipn_data(ipn_data)
         self.finish()
